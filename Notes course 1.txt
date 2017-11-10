@@ -1,0 +1,33 @@
+
+
+1. What is a shader?
+A shader is a program better suited at manipulating matrices on the graphical card (intead of manipulating registers on the processor). It is written in either GLSL (OpenGL) or HLSL (DirectX) and is compiled JIT.
+2. What are the diffferent shading stages and their purpose?
+Due to its matrix specialisation, shaders are good at manipulating/projecting points (vertex shader), manipulating primitives (geometry shaders) and rasterised values like texel/pixels values (fragment shader).
+They can also manipulate matrices in general, doing more complex calculations for physics engines (compute shaders).
+Models are read as points that are passed trough a Vertex Shader to project them on the right place, then turned into Primitives (triangles) that are manipulated trough several Geometry Shaders, then their area is rasterised and textured, colored and lighted trough Fragment Shaders.
+3.
+
+
+git clone https://username@bitbucket.org/teamsinspace/documentation-tests.git
+
+git clone https://itichi@bitbucket.org/glitter502_public/src/11790649f759328c51dbb6c3b5f721dfd8c52ac6/glitter502public
+
+ --depth=1 --bare 
+depth 1 only downloads the last revision
+
+
+git clone --depth=1 --bare  https://itichi@bitbucket.org/glitter502_public/src/11790649f759328c51dbb6c3b5f721dfd8c52ac6/glitter502public
+
+
+git clone https://itichi@bitbucket.org/glitter502_public
+https://itichi@bitbucket.org/glitter502_public
+https://bitbucket.org/itichi/glitter502_public.git
+
+svn export https://bitbucket.org/itichi/glitter502_public/glitter502_public
+
+--depth 1
+
+
+git clone --depth=1 --bare  https://itichi@bitbucket.org/glitter502_public/src/11790649f759328c51dbb6c3b5f721dfd8c52ac6/glitter502public
+git clone --depth 1 --bare https://bitbucket.org/itichi/glitter502_public/glitter502_public
