@@ -1,0 +1,8 @@
+Using Microsoft Visual Studio
+Change the options (right click on project) to use the right toolset (an older one)
+Put the libs from vendors/debug/(2015)/bin
+assimp-vc140-mt.dll
+glfw3.dll
+next to the project file
+
+put the shaders next to the project file
