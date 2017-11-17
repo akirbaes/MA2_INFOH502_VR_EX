@@ -28,7 +28,7 @@ void scroll_callback(GLFWwindow* window, double xoffset, double yoffset);
 void showFPS(void);
 float deltaTime = 0.0f;
 Camera cam = Camera(0, 0, 0, 0, 0, 0, 0, 0);
-Shader shade = Shader("normal2.vertex", "green.fragment");
+Shader shade = Shader("normal_color.vertex", "colored.fragment");
 
 int main(int argc, char * argv[]) {
 
@@ -71,11 +71,17 @@ int main(int argc, char * argv[]) {
 	GLuint vertexbuffer;
 	glGenBuffers(1, &vertexbuffer);
 	glBindBuffer(GL_ARRAY_BUFFER, vertexbuffer);
-	GLfloat data[] = {
+	/*GLfloat data[] = {
 		-1.0f, -1.0f, 0.0f,
 		0.0f, 1.0f, 0.0f,
 		1.0f,  1.0f, 0.0f,
+	};*/
+	GLfloat data[] = {
+	-0.1f, -0.1f, 0.0f, 0.1f, 0.5f, 0.2f,
+	0.0f, 0.7f, 0.0f, 0.3f, 0.5f, 0.1f,
+	0.5f,  0.8f, 0.0f, 0.2f, 0.9f, 0.0f
 	};
+
 
 	glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
 	
@@ -91,9 +97,17 @@ int main(int argc, char * argv[]) {
         glClearColor(0.75f, 0.25f, 0.25f, 1.0f);
         glClear(GL_COLOR_BUFFER_BIT);
 
-		glEnableVertexAttribArray(0);
+		////glEnableVertexAttribArray(0);
 		glBindBuffer(GL_ARRAY_BUFFER, VAO);
-		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
+
+		// position attribute
+		glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)0);
+		glEnableVertexAttribArray(0);
+		// color attribute
+		glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 6 * sizeof(float), (void*)(3 * sizeof(float)));
+		glEnableVertexAttribArray(1);
+
+		////glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, (void*)0);
 		shade.use();
 		glDrawArrays(GL_TRIANGLES, 0, 3);
 		glDisableVertexAttribArray(0);
